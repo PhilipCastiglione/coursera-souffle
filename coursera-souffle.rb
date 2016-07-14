@@ -26,6 +26,7 @@ class CourseImporter
   def import_courses
     imported_courses = []
     subdomains.each do |subdomain|
+      puts "CONTINUE TO STIR"
       courses_query_results = courses_query(subdomain.first)
 
       extracted_courses = extract_courses(courses_query_results)
@@ -36,6 +37,7 @@ class CourseImporter
 
       imported_courses.concat(extracted_courses)
     end
+    puts "STIR IN MILK"
     imported_courses
   end
 
@@ -98,6 +100,11 @@ class CSVGenerator
   end
 end
 
+puts "MELT BUTTER IN MEDIUM SAUCEPAN OVER LOW HEAT, ADD FLOUR, SALT AND PEPPER"
 c = CourseImporter.new
+puts "SEPERATE EGGS, BEAT YOLKS AND COMBINE WITH SAUCE"
 csv = CSVGenerator.new(c.courses)
+puts "BEAT EGG WHITES AND CREAM OF TARTAR UNTIL STIFF, FOLD INTO SAUCE"
+puts "BAKE FOR 20-25 MINUTES, OR UNTIL DONE"
 csv.generate_csv
+puts "YOUR SOUFFLE IS READY TO ENJOY"
