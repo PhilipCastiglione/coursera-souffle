@@ -19,10 +19,6 @@ class CourseImporter
     JSON.parse(Net::HTTP.get(URI(QUERY_ENDPOINT + "true"))) # sneaky
   end
 
-  def courses_query(subdomain_id)
-    JSON.parse(Net::HTTP.get(URI(QUERY_ENDPOINT + subdomain_id + ADDITIONAL_PARAMS)))
-  end
-
   def import_courses
     imported_courses = []
     subdomains.each do |subdomain|
@@ -39,6 +35,10 @@ class CourseImporter
     end
     puts "STIR IN MILK"
     imported_courses
+  end
+
+  def courses_query(subdomain_id)
+    JSON.parse(Net::HTTP.get(URI(QUERY_ENDPOINT + subdomain_id + ADDITIONAL_PARAMS)))
   end
 
   def extract_subdomains(query_results)
